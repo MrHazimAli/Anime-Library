@@ -1,5 +1,5 @@
-import { useNavigation } from '@react-navigation/native';
-import { Pressable, Text } from 'react-native';
+import { Pressable } from 'react-native';
+import { Text } from '../Text/Text';
 
 type Props = {
   label: string
@@ -9,7 +9,7 @@ type Props = {
 export function Button({ label, onPress }: Props) {
   return (
     <Pressable onPress={onPress}>
-      <Text>{label}</Text>
+      <Text text={label} />
     </Pressable>
   )
 }

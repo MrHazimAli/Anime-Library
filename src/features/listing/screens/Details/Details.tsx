@@ -1,9 +1,10 @@
-import { Text, View } from 'react-native';
+import { View } from 'react-native';
+import { Text } from '../../../../shared/Text/Text';
 
 export function Details() {
   return (
     <View>
-      <Text>Details</Text>
+      <Text text='Details' />
     </View>
   )
 }
