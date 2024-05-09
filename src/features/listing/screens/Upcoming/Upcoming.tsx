@@ -1,10 +1,30 @@
 import { View } from 'react-native';
-import { Text } from '../../../../shared/Text/Text';
+import { useStyles } from 'react-native-unistyles';
+import { useQuery } from '@tanstack/react-query';
+import { queries } from '../../../../api/queries';
+import { MovieCard } from '../../components/MovieCard/MovieCard';
+import { FlashList, type ListRenderItem } from '@shopify/flash-list';
+import { stylesheet } from './upcoming.styles';
+import { MovieEntry } from '../../api/types';
+
+type Item = MovieEntry;
 
 export function Upcoming() {
+  const { styles } = useStyles(stylesheet)
+  const { data } = useQuery(queries.anime.getAll('upcoming'));
+
+  const renderItem: ListRenderItem<Item> = ({ item }) => {
+    return <MovieCard {...item} />
+  }
+
   return (
-    <View>
-      <Text text='Upcoming' />
+    <View style={styles.container}>
+      <FlashList
+        data={data?.data}
+        numColumns={2}
+        renderItem={renderItem}
+        estimatedItemSize={200}
+      />
     </View>
   )
 }
