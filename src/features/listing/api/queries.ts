@@ -6,7 +6,7 @@ export const animeQueries = createQueryKeys('anime', {
     return {
       queryKey: [status],
       async queryFn() {
-        return new HttpClient<any>('/anime').get();
+        return new HttpClient<any>('/anime').setParams({status}).get();
       },
     }
   }
