@@ -15,6 +15,8 @@ export function Airing() {
   const { styles } = useStyles(stylesheet)
   const { data } = useQuery(queries.anime.getAll('airing'));
 
+  console.log('data ', data)
+
   const renderItem: ListRenderItem<Item> = ({ item }) => {
     return <MovieCard {...item} />
   }
@@ -23,7 +25,7 @@ export function Airing() {
     <View style={styles.container}>
       <FlashList
         data={data?.data}
-        numColumns={2}
+        numColumns={3}
         renderItem={renderItem}
         estimatedItemSize={200}
       />
